@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lazadaclone/compnnetscreen/Myorders.dart';
+import 'package:lazadaclone/compnnetscreen/settings.dart';
 import 'package:lazadaclone/component/channelcomponent.dart';
 import 'package:lazadaclone/component/recentlyview.dart';
 import 'package:lazadaclone/model/channeltemplist.dart';
@@ -94,7 +96,7 @@ class _AccountpageState extends State<Accountpage> {
                       children: [
                         CircleAvatar(
                           backgroundImage: NetworkImage(
-                              'https://scontent.fmnl8-5.fna.fbcdn.net/v/t39.30808-6/499594426_1641793683192256_3740902847521410793_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGPe6RgRqhrbm6J_Aw_b4wm8t7w6sZ3aQPy3vDqxndpA9KGZKDeaOAz6L4iG6AvjJIyGlzlk96201JYORSWxMB-&_nc_ohc=ogty1nSHpcAQ7kNvwHH4A64&_nc_oc=AdkieYbKbmy6HnKPBBTLaxD_K3VNdIaKANh1hr4eIdLL4jcKVAeEP_C5HA-y7gchO-8&_nc_zt=23&_nc_ht=scontent.fmnl8-5.fna&_nc_gid=iVYaMe9_3m-6MQ_7E4MPKA&oh=00_AfLA1GcjnSmMdf198U47mQXq7LFrSv2VagEJVajiXswYAA&oe=683E3ECE'),
+                              'https://scontent.fmnl8-5.fna.fbcdn.net/v/t39.30808-6/499594426_1641793683192256_3740902847521410793_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGPe6RgRqhrbm6J_Aw_b4wm8t7w6sZ3aQPy3vDqxndpA9KGZKDeaOAz6L4iG6AvjJIyGlzlk96201JYORSWxMB-&_nc_ohc=-7cNkbI6Y_4Q7kNvwGIX-uA&_nc_oc=Adnf2QHfjVxmJK12SXPSdhi4Lyor_4Qk0tDwRYb0m5ciw8hBbEC10KIrLNbH7Ox99Dc&_nc_zt=23&_nc_ht=scontent.fmnl8-5.fna&_nc_gid=cI-wPuRrwmwq5Pu50-RJHw&oh=00_AfItT50i0AJZYNmdqF1uRU-F1fQ_i9QVnSq62_gJGoeWMA&oe=68442D8E'),
                           radius: 25,
                         ),
                         Column(
@@ -137,7 +139,16 @@ class _AccountpageState extends State<Accountpage> {
                         ),
                       ],
                     ),
-                    IconButton(onPressed: () {}, icon: Icon(Icons.settings))
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const Settings(),
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.settings),
+                    )
                   ],
                 ),
               ),
@@ -307,10 +318,19 @@ class _AccountpageState extends State<Accountpage> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Text(
-                          'View All Orders >',
-                          style: TextStyle(
-                            fontSize: 15,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const Myorders(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'View All Orders >',
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
                           ),
                         ),
                       ],

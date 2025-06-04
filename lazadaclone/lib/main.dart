@@ -14,7 +14,7 @@ class Laazadaclone extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Homepagelazadaclone(),
+      home: const Homepagelazadaclone(),
     );
   }
 }
