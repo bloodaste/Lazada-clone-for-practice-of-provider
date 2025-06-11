@@ -73,3 +73,46 @@ List<Lastpageofaccount> lastlist = [
     nameoftheicon: 'Free Returns',
   ),
 ];
+
+List<Lastpageofaccount> mainpageicon = [
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Lazlize',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'LazMart',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: '0 wow deals',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Lazland',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Bigwinplus',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Biggest savings',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Merge Boss',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Gogo Match',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Bundle & save',
+  ),
+  Lastpageofaccount(
+    myicon: Icon(Icons.hearing_outlined),
+    nameoftheicon: 'Channels',
+  ),
+];

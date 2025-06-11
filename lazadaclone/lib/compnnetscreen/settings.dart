@@ -11,12 +11,12 @@ class Settings extends StatelessWidget {
       {'name': 'Address Book', 'subtitle': '', 'trailer': ''},
       {
         'name': 'Message',
-        'subtitle': 'Recieve exclusive offers and personal update',
+        'subtitle': 'Receive exclusive offers and personal updates',
         'trailer': ''
       },
       {
         'name': 'Country',
-        'subtitle': 'Philhipines Is your current country',
+        'subtitle': 'Philippines is your current country',
         'trailer':
             'https://cdn.britannica.com/73/3473-050-3A33E719/Flag-Philippines.jpg'
       },
@@ -26,57 +26,60 @@ class Settings extends StatelessWidget {
       {'name': 'Help', 'subtitle': '', 'trailer': ''},
       {'name': 'Feedback', 'subtitle': '', 'trailer': ''},
     ];
+
     return Scaffold(
-      backgroundColor: Color(0xffeff1f5),
+      backgroundColor: const Color(0xffeff1f5),
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           'Settings',
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-          ),
+          style: TextStyle(fontWeight: FontWeight.w500),
         ),
       ),
       body: Column(
         children: [
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 15),
-            color: Colors.white,
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
             child: ListView.builder(
-              shrinkWrap: true,
               itemCount: settings.length,
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    settings[index]['name'],
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
+                return Container(
+                  color: Colors.white,
+                  margin: const EdgeInsets.only(bottom: 1),
+                  child: ListTile(
+                    dense: true,
+                    title: Text(
+                      settings[index]['name'],
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
+                    subtitle: settings[index]['subtitle'] != ''
+                        ? Text(settings[index]['subtitle'])
+                        : null,
+                    leading: settings[index]['trailer'] != ''
+                        ? SizedBox(
+                            height: 30,
+                            width: 50,
+                            child: Image.network(
+                              settings[index]['trailer'],
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : null,
                   ),
-                  subtitle: Text(settings[index]['subtitle'] != ''
-                      ? settings[index]['subtitle']
-                      : ''),
-                  leading: settings[index]['trailer'] != ''
-                      ? SizedBox(
-                          height: 30,
-                          width: 50,
-                          child: Image.network(
-                            settings[index]['trailer'],
-                            fit: BoxFit.fill,
-                          ),
-                        )
-                      : null,
                 );
               },
             ),
           ),
           Container(
             color: Colors.white,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(16),
             width: double.infinity,
-            child: Text(
+            child: const Text(
               'Logout',
               textAlign: TextAlign.center,
               style: TextStyle(

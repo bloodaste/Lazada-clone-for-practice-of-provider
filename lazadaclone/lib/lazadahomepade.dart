@@ -49,7 +49,7 @@ class _HomepagelazadacloneState extends State<Homepagelazadaclone> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_basket),
-            label: 'Liked',
+            label: 'Cart',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.people),
