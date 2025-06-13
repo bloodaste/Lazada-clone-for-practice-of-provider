@@ -16,6 +16,7 @@ class _HomepageState extends State<Homepage> {
     final height = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
+      backgroundColor: Color(0xfff0f0f7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -189,12 +190,12 @@ class _HomepageState extends State<Homepage> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 10,
+                      spacing: 5,
                       children: [
                         Text(
                           '6.6',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Color(0xfff94798),
                           ),
@@ -210,7 +211,7 @@ class _HomepageState extends State<Homepage> {
                               Text(
                                 'June\n5-6',
                                 style: TextStyle(
-                                    fontSize: 13,
+                                    fontSize: 10,
                                     fontWeight: FontWeight.w600,
                                     height: 1,
                                     color: Colors.white),
@@ -222,7 +223,7 @@ class _HomepageState extends State<Homepage> {
                         Text(
                           'SALE START AT 8PM',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Color(0xfff94798),
                           ),
@@ -263,7 +264,7 @@ class _HomepageState extends State<Homepage> {
                               child: Text(
                                 'COLLECT VOUCHERS HERE',
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 10,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -294,7 +295,7 @@ class _HomepageState extends State<Homepage> {
                                           Text(
                                             '18% OFF',
                                             style: TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 10,
                                               fontWeight: FontWeight.bold,
                                               color: Color(0xfff94798),
                                             ),
@@ -302,7 +303,7 @@ class _HomepageState extends State<Homepage> {
                                           Text(
                                             'Lazada Voucher',
                                             style: TextStyle(
-                                              fontSize: 12,
+                                              fontSize: 10,
                                               fontWeight: FontWeight.bold,
                                               color: Color(0xfff94798),
                                             ),
@@ -319,7 +320,7 @@ class _HomepageState extends State<Homepage> {
                                           Text(
                                             '150.00',
                                             style: TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 10,
                                               fontWeight: FontWeight.bold,
                                               color: Color(0xff2f9d8a),
                                             ),
@@ -327,7 +328,7 @@ class _HomepageState extends State<Homepage> {
                                           Text(
                                             'Free Shipping',
                                             style: TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 10,
                                               fontWeight: FontWeight.bold,
                                               color: Color(0xff2f9d8a),
                                             ),
@@ -355,7 +356,7 @@ class _HomepageState extends State<Homepage> {
                                           child: Text(
                                             'Collect All',
                                             style: TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 10,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
                                             ),
@@ -372,7 +373,7 @@ class _HomepageState extends State<Homepage> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -1014,7 +1015,24 @@ class _HomepageState extends State<Homepage> {
                   ],
                 ),
               ),
-              Suggestion(),
+              SizedBox(
+                height: 10,
+              ),
+              GridView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 0.8,
+                ),
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 20,
+                itemBuilder: (context, index) {
+                  return Suggestion();
+                },
+              ),
             ],
           ),
         ),
