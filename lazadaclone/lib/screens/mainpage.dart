@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lazadaclone/compnnetscreen/productpage.dart';
 import 'package:lazadaclone/component/productsuggestion.dart';
 import 'package:lazadaclone/model/lastpageofaccount.dart';
 
@@ -518,12 +519,15 @@ class _HomepageState extends State<Homepage> {
                         Row(
                           spacing: 5,
                           children: [
-                            Text(
-                              'LazFlash',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                'LazFlash',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                             Row(
@@ -588,30 +592,41 @@ class _HomepageState extends State<Homepage> {
                                   ),
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
-                        Row(
-                          spacing: 5,
-                          children: [
-                            Text(
-                              '6.6',
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xfff94757),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Productpage(),
                               ),
-                            ),
-                            Text(
-                              'Up to 90% Offs',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xfff94757),
+                            );
+                            print('been click');
+                          },
+                          child: Row(
+                            spacing: 5,
+                            children: [
+                              Text(
+                                '6.6',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xfff94757),
+                                ),
                               ),
-                            ),
-                            Icon(Icons.chevron_right_rounded)
-                          ],
+                              Text(
+                                'Up to 90% Offs',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xfff94757),
+                                ),
+                              ),
+                              Icon(Icons.chevron_right_rounded)
+                            ],
+                          ),
                         )
                       ],
                     ),

@@ -1,12 +1,51 @@
 import 'package:flutter/material.dart';
 
-class Productcartpage extends StatelessWidget {
-  const Productcartpage({super.key});
+class Productcartpage extends StatefulWidget {
+  const Productcartpage({
+    super.key,
+    required this.sellername,
+    required this.productName,
+    required this.isLazMall,
+    required this.productImage,
+    required this.isDiscounted,
+    required this.discountedPrice,
+    required this.notDiscountedPrice,
+    required this.productSelected,
+  });
+  final String sellername;
+  final String productName;
+  final bool isLazMall;
+  final String productImage;
+  final bool isDiscounted;
+  final String discountedPrice;
+  final String notDiscountedPrice;
+  final String productSelected;
+  @override
+  State<Productcartpage> createState() => _ProductcartpageState();
+}
+
+class _ProductcartpageState extends State<Productcartpage> {
+  bool ishceck = false;
+  int itemcount = 0;
+
+  void additemcount() {
+    setState(() {
+      itemcount++;
+    });
+  }
+
+  void minusitemcount() {
+    setState(() {
+      if (itemcount > 0) {
+        itemcount--;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    bool ishceck = false;
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 5),
       color: Colors.white,
       child: Column(
         children: [
@@ -14,85 +53,96 @@ class Productcartpage extends StatelessWidget {
             children: [
               Checkbox(
                 value: ishceck,
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    ishceck = value ?? false;
+                  });
+                },
               ),
-              Container(
-                padding: EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  color: Color(0xffc60b11),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Text(
-                  'LazMall',
-                  style: TextStyle(
-                      fontSize: 7,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
+              widget.isLazMall
+                  ? Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        color: const Color(0xffc60b11),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Text(
+                        'Lazmall',
+                        style: TextStyle(
+                            fontSize: 7,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    )
+                  : SizedBox(),
+              const SizedBox(width: 5),
               Expanded(
-                  child: Row(
-                children: [
-                  Text(
-                    'Rakk Phillpines',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                child: Row(
+                  children: [
+                    Text(
+                      widget.sellername,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.fade,
                     ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Icon(
-                    Icons.chevron_right_outlined,
-                    size: 20,
-                    color: Colors.grey,
-                  ),
-                ],
-              )),
-              Row(
-                children: [
-                  Icon(
-                    Icons.shield_outlined,
-                    size: 15,
-                    color: Color(0xffc5030a),
-                  ),
-                  Text(
-                    '100% Authentic',
-                    style: TextStyle(
+                    Icon(
+                      Icons.chevron_right_outlined,
+                      size: 20,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+              ),
+              if (widget.isLazMall)
+                Row(
+                  children: const [
+                    Icon(
+                      Icons.shield_outlined,
+                      size: 15,
                       color: Color(0xffc5030a),
-                      fontWeight: FontWeight.bold,
                     ),
-                  )
-                ],
+                    Text(
+                      '100% Authentic',
+                      style: TextStyle(
+                        color: Color(0xffc5030a),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              SizedBox(
+                width: 10,
               )
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
               children: [
                 Checkbox(
                   value: ishceck,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    setState(() {
+                      ishceck = value ?? false;
+                    });
+                  },
                 ),
                 SizedBox(
                   height: 90,
                   width: 90,
                   child: Image.network(
-                      'https://img.lazcdn.com/g/p/c1635ec862a0c742218080956e33fdb7.jpg_720x720q80.jpg'),
+                    widget.productImage,
+                  ),
                 ),
-                SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Expanded(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Attack Shark x3 49g Super Light Mouse,pixart Paw3,tinatamad nako mag lagay ng correct data ',
+                        widget.productName,
                         maxLines: 2,
                         style: TextStyle(
                           color: Colors.black,
@@ -103,7 +153,7 @@ class Productcartpage extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'Black',
+                            widget.productSelected,
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontWeight: FontWeight.bold,
@@ -116,92 +166,98 @@ class Productcartpage extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '₱495.00 ',
-                              style: TextStyle(
-                                  color: Color(0xffeb5892),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                            ),
-                            TextSpan(
-                              text: 'Discounted Price',
-                              style: TextStyle(
-                                  color: Color(0xffeb5892),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
+                      const SizedBox(height: 5),
+                      widget.isDiscounted
+                          ? RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: widget.discountedPrice,
+                                    style: TextStyle(
+                                        color: Color(0xffeb5892),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  ),
+                                  TextSpan(
+                                    text: 'Discounted Price',
+                                    style: TextStyle(
+                                        color: Color(0xffeb5892),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12),
+                                  )
+                                ],
+                              ),
                             )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 3,
-                      ),
+                          : SizedBox(),
+                      const SizedBox(height: 3),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            '₱595.00',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
-                          Row(
-                            spacing: 5,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                ),
-                                decoration: BoxDecoration(
-                                    color: Color(0xfff8f9fd),
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: Text(
-                                  '—',
+                          widget.isDiscounted
+                              ? Text(
+                                  widget.notDiscountedPrice,
                                   style: TextStyle(
                                       color: Colors.grey,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 10),
+                                      fontSize: 12),
+                                )
+                              : Text(
+                                  widget.notDiscountedPrice,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: minusitemcount,
+                                child: Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xfff8f9fd),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: const Text(
+                                    '—',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10),
+                                  ),
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                ),
-                                decoration: BoxDecoration(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                decoration: const BoxDecoration(
                                   color: Color(0xfff8f9fd),
                                 ),
                                 child: Text(
-                                  '1',
+                                  '$itemcount',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 10),
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                ),
-                                decoration: BoxDecoration(
-                                    color: Color(0xfff8f9fd),
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: Text(
-                                  '+',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10),
+                              GestureDetector(
+                                onTap: additemcount,
+                                child: Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xfff8f9fd),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: const Text(
+                                    '+',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10),
+                                  ),
                                 ),
                               ),
-                              SizedBox(
-                                width: 5,
-                              )
+                              const SizedBox(width: 5),
                             ],
                           ),
                         ],
