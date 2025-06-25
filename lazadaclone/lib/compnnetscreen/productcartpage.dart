@@ -79,13 +79,15 @@ class _ProductcartpageState extends State<Productcartpage> {
               Expanded(
                 child: Row(
                   children: [
-                    Text(
-                      widget.sellername,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Text(
+                        widget.sellername,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      overflow: TextOverflow.fade,
                     ),
                     Icon(
                       Icons.chevron_right_outlined,
@@ -223,7 +225,7 @@ class _ProductcartpageState extends State<Productcartpage> {
                                     style: TextStyle(
                                         color: Colors.grey,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 10),
+                                        fontSize: 15),
                                   ),
                                 ),
                               ),
@@ -237,7 +239,7 @@ class _ProductcartpageState extends State<Productcartpage> {
                                   '$itemcount',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 10),
+                                      fontSize: 13),
                                 ),
                               ),
                               GestureDetector(
@@ -253,11 +255,11 @@ class _ProductcartpageState extends State<Productcartpage> {
                                     style: TextStyle(
                                         color: Colors.grey,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 10),
+                                        fontSize: 15),
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 5),
+                              const SizedBox(width: 10),
                             ],
                           ),
                         ],

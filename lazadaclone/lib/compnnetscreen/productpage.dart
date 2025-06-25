@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lazadaclone/component/lazflashprodoductpage.dart';
+import 'package:lazadaclone/component/productdetatil.dart';
 import 'package:lazadaclone/component/promsiepromo.dart';
 import 'package:lazadaclone/model/producttpagefilter.dart';
 
@@ -160,65 +162,44 @@ class _ProductpageState extends State<Productpage> {
                           );
                         }),
                   ),
+                  SizedBox(
+                    height: 5,
+                  ),
                   GridView.builder(
                       shrinkWrap: true,
                       itemCount: 20,
                       physics: NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2),
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 2,
+                          childAspectRatio: .7,
+                          crossAxisSpacing: 2),
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                  fit: BoxFit.fill,
-                                  height: height * 0.15,
-                                  'https://img.lazcdn.com/g/p/af0d098019a747753f77e82d2ffc0169.jpg_720x720q80.jpg_.webp'),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 5),
-                              decoration: BoxDecoration(
-                                color: Color(0xffffedef),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '₱16,000',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xfff94757),
-                                    ),
-                                  ),
-                                  Container(
-                                    color: Colors.red,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 3, vertical: 2),
-                                    child: Text(
-                                      '-19%',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const Productdetatil()),
+                              );
+                            },
+                            child: Lazflashprodoductpage(),
+                          ),
                         );
                       })
                 ],
               ),
             )
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Row(
+          children: [Text('saslajd')],
         ),
       ),
     );
